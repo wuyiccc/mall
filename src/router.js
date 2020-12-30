@@ -5,18 +5,19 @@
  */
 import Vue from 'vue'
 import Router from 'vue-router'
-import Home from './pages/first/Home'
-import Index from './pages/first/sub/Index'
-import Product from "./pages/first/sub/Product";
-import Detail from "./pages/first/sub/Detail";
+import Home from '@/pages/first/Home'
+import Index from '@/pages/first/sub/Index'
+import Product from "@/pages/first/sub/Product";
+import Detail from "@/pages/first/sub/Detail";
 
-import Cart from "./pages/Cart";
+import Cart from "@/pages/Cart";
 
-import Order from "./pages/second/Order";
-import OrderList from "./pages/second/sub/OrderList";
-import OrderConfirm from "./pages/second/sub/OrderConfirm";
-import OrderPay from "./pages/second/sub/OrderPay";
-import Alipay from "./pages/second/sub/Aplipay";
+import Order from "@/pages/second/Order";
+import OrderList from "@/pages/second/sub/OrderList";
+import OrderConfirm from "@/pages/second/sub/OrderConfirm";
+import OrderPay from "@/pages/second/sub/OrderPay";
+import AliPay from "@/pages/second/sub/AliPay";
+import Login from "@/pages/Login";
 
 
 Vue.use(Router);
@@ -24,30 +25,38 @@ Vue.use(Router);
 export default new Router({
     routes: [
         {
-            path: '/',
+            // 门户部分, 不需要登录
+            path: '/home',
             name: 'home',
             component: Home,
-            redirect: '/index',
+            redirect: '/home/index',
             children: [
                 {
-                    path: '/index',
+                    path: '/home/index',
                     name: 'index',
                     component: Index
                 }, {
-                    path: '/product/:id',
+                    path: '/home/product/:id',
                     name: 'product',
                     component: Product
                 }, {
-                    path: '/detail/:id',
+                    path: '/home/detail/:id',
                     name: 'detail',
                     component: Detail
                 }
             ]
         }, {
+            path: '/login',
+            name: 'login',
+            component: Login
+        },
+        {
+            // 购物车 需要登录
             path: '/cart',
             name: 'cart',
             component: Cart
         },{
+            // 订单部分, 需要登录
             path: '/order',
             name: 'order',
             component: Order,
@@ -69,8 +78,8 @@ export default new Router({
                 },
                 {
                     path: '/order/alipay',
-                    name: 'alipay',
-                    component: Alipay,
+                    name: 'ali-pay',
+                    component: AliPay,
                 }
             ]
         }

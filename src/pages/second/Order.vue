@@ -9,8 +9,8 @@
 </template>
 
 <script>
-    import NavFooter from "../../components/NavFooter";
-    import OrderHeader from "../../components/OrderHeader";
+    import NavFooter from "@/components/NavFooter";
+    import OrderHeader from "@/components/OrderHeader";
 
     export default {
         name: "Order",

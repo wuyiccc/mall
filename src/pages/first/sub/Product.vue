@@ -1,6 +1,6 @@
 <!--商品核心-->
 <template>
-    <div></div>
+    <div>product</div>
 </template>
 
 <script>
