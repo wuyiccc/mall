@@ -1,11 +1,11 @@
-<!--商品详情核心-->
+<!--商品核心-->
 <template>
-    <div>detail</div>
+    <div></div>
 </template>
 
 <script>
     export default {
-        name: "detail"
+        name: "Product"
     }
 </script>
 

@@ -1,11 +1,10 @@
-<!--订单确认-->
 <template>
-    <div>orderConfirm</div>
+    <div>orderPay</div>
 </template>
 
 <script>
     export default {
-        name: "orderConfirm"
+        name: "OrderPay"
     }
 </script>
 

@@ -1,11 +1,11 @@
-<!--订单列表-->
+<!--商品详情核心-->
 <template>
-    <div>orderList</div>
+    <div>detail</div>
 </template>
 
 <script>
     export default {
-        name: "orderList"
+        name: "Detail"
     }
 </script>
 

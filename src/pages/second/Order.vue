@@ -1,6 +1,7 @@
+<!--订单公用页面-->
 <template>
     <div>
-        cart
+        order
         <order-header></order-header>
         <router-view></router-view>
         <nav-footer></nav-footer>
@@ -8,11 +9,12 @@
 </template>
 
 <script>
-    import OrderHeader from "../components/OrderHeader";
-    import NavFooter from "../components/NavFooter";
+    import NavFooter from "../../components/NavFooter";
+    import OrderHeader from "../../components/OrderHeader";
+
     export default {
-        name: "cart",
-        components: {NavFooter, OrderHeader}
+        name: "Order",
+        components: {OrderHeader, NavFooter}
     }
 </script>
 

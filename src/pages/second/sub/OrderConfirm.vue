@@ -1,11 +1,11 @@
-<!--商品核心-->
+<!--订单确认-->
 <template>
-    <div></div>
+    <div>orderConfirm</div>
 </template>
 
 <script>
     export default {
-        name: "product"
+        name: "OrderConfirm"
     }
 </script>
 

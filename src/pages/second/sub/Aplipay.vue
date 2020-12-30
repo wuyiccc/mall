@@ -1,11 +1,10 @@
-<!--登录核心-->
 <template>
-  <div>login</div>
+    <div>alipay</div>
 </template>
 
 <script>
     export default {
-        name: "login"
+        name: "Alipay"
     }
 </script>
 

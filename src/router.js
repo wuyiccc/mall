@@ -5,15 +5,20 @@
  */
 import Vue from 'vue'
 import Router from 'vue-router'
-import home from './pages/first/home'
-import index from './pages/first/index'
-import product from "./pages/first/product";
-import detail from "./pages/first/detail";
-import order from "./pages/second/order";
-import orderList from "./pages/second/orderList";
-import orderConfirm from "./pages/second/orderConfirm";
-import orderPay from "./pages/second/orderPay";
-import alipay from "./pages/alipay";
+import Home from './pages/first/Home'
+import Index from './pages/first/sub/Index'
+import Product from "./pages/first/sub/Product";
+import Detail from "./pages/first/sub/Detail";
+
+import Cart from "./pages/Cart";
+
+import Order from "./pages/second/Order";
+import OrderList from "./pages/second/sub/OrderList";
+import OrderConfirm from "./pages/second/sub/OrderConfirm";
+import OrderPay from "./pages/second/sub/OrderPay";
+import Alipay from "./pages/second/sub/Aplipay";
+
+
 Vue.use(Router);
 
 export default new Router({
@@ -21,47 +26,51 @@ export default new Router({
         {
             path: '/',
             name: 'home',
-            component: home,
+            component: Home,
             redirect: '/index',
             children: [
                 {
                     path: '/index',
                     name: 'index',
-                    component: index
+                    component: Index
                 }, {
                     path: '/product/:id',
                     name: 'product',
-                    component: product
+                    component: Product
                 }, {
                     path: '/detail/:id',
                     name: 'detail',
-                    component: detail
+                    component: Detail
                 }
             ]
         }, {
+            path: '/cart',
+            name: 'cart',
+            component: Cart
+        },{
             path: '/order',
             name: 'order',
-            component: order,
+            component: Order,
             children: [
                 {
-                    path: 'list',
+                    path: '/order/list',
                     name: 'order-list',
-                    component: orderList,
+                    component: OrderList,
                 },
                 {
-                    path: 'confirm',
+                    path: '/order/confirm',
                     name: 'order-confirm',
-                    component: orderConfirm,
+                    component: OrderConfirm,
                 },
                 {
-                    path: 'pay',
+                    path: '/order/pay',
                     name: 'order-pay',
-                    component: orderPay,
+                    component: OrderPay,
                 },
                 {
-                    path: 'alipay',
+                    path: '/order/alipay',
                     name: 'alipay',
-                    component: alipay,
+                    component: Alipay,
                 }
             ]
         }

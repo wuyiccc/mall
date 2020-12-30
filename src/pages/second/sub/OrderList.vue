@@ -1,10 +1,11 @@
+<!--订单列表-->
 <template>
-    <div>orderPay</div>
+    <div>orderList</div>
 </template>
 
 <script>
     export default {
-        name: "orderPay"
+        name: "OrderList"
     }
 </script>
 
