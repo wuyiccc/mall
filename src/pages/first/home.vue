@@ -1,0 +1,22 @@
+<!--首页等页面共用页面-->
+<template>
+    <div>
+        home
+        <nav-header></nav-header>
+        <router-view></router-view>
+        <nav-footer></nav-footer>
+    </div>
+</template>
+
+<script>
+    import NavHeader from "../../components/NavHeader";
+    import NavFooter from "../../components/NavFooter";
+    export default {
+        name: "home",
+        components: {NavFooter, NavHeader}
+    }
+</script>
+
+<style scoped>
+
+</style>
