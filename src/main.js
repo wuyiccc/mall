@@ -11,13 +11,6 @@ import env from '@/env';
 Vue.use(VueAxios, axios);
 Vue.config.productionTip = false
 
-const mock = true;
-
-// 如果mock为true, 就打开mock拦截开关, 让请求走虚拟数据
-if (mock) {
-    require('./mock/api')
-}
-
 // 根据前端的跨域方式进行调整
 /**
  * 1. 代理
@@ -25,7 +18,6 @@ if (mock) {
  * 3. cors: 对应后端服务器的url, 此处采用
  */
 axios.defaults.baseURL = env.baseURL;
-axios.defaults.baseURL = '/api';
 // 超时时间
 axios.defaults.timeout = 8000;
 /**

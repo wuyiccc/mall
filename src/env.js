@@ -14,7 +14,7 @@ switch (process.env.NODE_ENV) {
     case 'development':
         baseURL = 'http://dev-mall-pre.springboot.cn/api';
         break;
-    case 'test-self':
+    case 'test':
         baseURL = 'http://test-mall-pre.springboot.cn/api';
         break;
     case 'production':
