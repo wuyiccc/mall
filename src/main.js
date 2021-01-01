@@ -2,8 +2,11 @@ import Vue from 'vue'
 import axios from 'axios';
 import VueAxios from 'vue-axios';
 
+
+// 自定义的组件必须以@ 或者 . 开头，不能直接写组件名称，否则会被当作引入的依赖
 import App from '@/App.vue'
 import router from "@/router";
+import env from '@/env';
 
 Vue.use(VueAxios, axios);
 Vue.config.productionTip = false
@@ -12,9 +15,9 @@ Vue.config.productionTip = false
 /**
  * 1. 代理
  * 2. jsonp
- * 3. cors
+ * 3. cors: 对应后端服务器的url, 此处采用
  */
-axios.defaults.baseURL = '/api'
+axios.defaults.baseURL = env.baseURL;
 // 超时时间
 axios.defaults.timeout = 8000;
 /**
