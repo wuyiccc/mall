@@ -55,7 +55,7 @@ export default new Router({
             path: '/cart',
             name: 'cart',
             component: Cart
-        },{
+        }, {
             // 订单部分, 需要登录
             path: '/order',
             name: 'order',

@@ -1,7 +1,6 @@
 <!--订单公用页面-->
 <template>
     <div>
-        order
         <order-header></order-header>
         <router-view></router-view>
         <nav-footer></nav-footer>

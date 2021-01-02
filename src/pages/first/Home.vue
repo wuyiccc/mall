@@ -1,7 +1,6 @@
 <!--首页等页面共用页面-->
 <template>
     <div>
-        home
         <nav-header></nav-header>
         <router-view></router-view>
         <nav-footer></nav-footer>
