@@ -1,12 +1,20 @@
 <!--首页核心-->
 <template>
-    <div>index</div>
+  <div>
+    <ServiceBar></ServiceBar>
+  </div>
 </template>
 
 <script>
-    export default {
-        name: "Index"
-    }
+
+import ServiceBar from "@/components/ServiceBar";
+
+export default {
+  name: "Index",
+  components: {
+    ServiceBar
+  }
+}
 </script>
 
 <style scoped>

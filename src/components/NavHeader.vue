@@ -9,7 +9,7 @@
           <a href="javascript:">协议规则</a>
         </div>
         <div class="topbar-user">
-          <a href="javascript:" v-if="username">{{username}}</a>
+          <a href="javascript:" v-if="username">{{ username }}</a>
           <a href="javascript:" v-if="!username" @click="login">登录</a>
           <a href="javascript:" v-if="username">我的订单</a>
           <a href="javascript:" class="my-cart" @click="goToCart"><span class="icon-cart"></span>购物车</a>
@@ -32,7 +32,7 @@
                           :alt="item.subTitile">
                     </div>
                     <div class="pro-name">{{ item.name }}</div>
-                    <div class="pro-price">{{ item.price | currency}}</div>
+                    <div class="pro-price">{{ item.price | currency }}</div>
                   </a>
                 </li>
               </ul>
@@ -85,11 +85,11 @@ export default {
   // 过滤器
   filters: {
     currency(val) {
-        if (!val) {
-          return '0.00';
-        }
+      if (!val) {
+        return '0.00';
+      }
 
-        return '￥' + val.toFixed(2) + '元';
+      return '￥' + val.toFixed(2) + '元';
     }
   },
   mounted() {
@@ -109,11 +109,7 @@ export default {
       }).then((res) => {
         // res 是经过axios拦截器处理之后的信息
         console.log('#### products res.list', res.list);
-        if (res.list.length > 6) {
-          this.phoneList = res.list.slice(0, 6);
-        } else {
-          this.phoneList = res.list;
-        }
+        this.phoneList = res.list;
       })
     },
     goToCart() {
@@ -236,6 +232,8 @@ export default {
             border-top: 1px solid #e5e5e5;
             box-shadow: 0px 7px 6px 0px rgba(0, 0, 0, 0.11);
             transition: all 0.5s;
+            background-color: #ffffff;;
+
 
             .product {
               position: relative;
