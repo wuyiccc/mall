@@ -98,13 +98,19 @@
         </div>
       </div>
     </div>
-    <ServiceBar></ServiceBar>
+    <service-bar></service-bar>
+    <modal title="提示" sure-text="查看购物车" btn-type="1" modal-type="middle" :show-modal="true">
+      <template v-slot:body>
+        <p>商品添加成功</p>
+      </template>
+    </modal>
   </div>
 </template>
 
 <script>
 import ServiceBar from "@/components/ServiceBar";
 import {swiper, swiperSlide} from 'vue-awesome-swiper';
+import Modal from '@/components/Modal';
 import 'swiper/dist/css/swiper.css';
 
 export default {
@@ -112,7 +118,8 @@ export default {
   components: {
     ServiceBar,
     swiper,
-    swiperSlide
+    swiperSlide,
+    Modal
   },
   data() {
     return {
@@ -509,13 +516,14 @@ export default {
               line-height: 24px;
               color: #ffffff;
 
-              &.new-pro{
+              &.new-pro {
                 display: inline-block;
-                background-color:#7ECF68;
+                background-color: #7ECF68;
               }
-              &.kill-pro{
+
+              &.kill-pro {
                 display: inline-block;
-                background-color:#E82626;
+                background-color: #E82626;
               }
             }
 
