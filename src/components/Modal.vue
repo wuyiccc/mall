@@ -1,23 +1,23 @@
+<!--弹框组件-->
 <template>
-
   <!--  slide是下划-->
   <transition name="slide">
     <div class="modal" v-show="showModal">
       <div class="mask"></div>
       <div class="modal-dialog">
         <div class="modal-header">
-          <span>标题</span>
+          <span>{{title}}</span>
           <a href="javascript:" class="icon-close" @click="$emit('cancel')"></a>
         </div>
         <div class="modal-body">
           <slot name="body"></slot>
         </div>
         <div class="modal-footer">
-          <a href="javascript:" class="btn" v-if="btnType==='1'" @click="$emit('submit')">确定</a>
-          <a href="javascript:" class="btn" v-else-if="btnType==='2'" @click="$emit('cancel')">取消</a>
+          <a href="javascript:" class="btn" v-if="btnType==='1'" @click="$emit('submit')">{{sureText}}</a>
+          <a href="javascript:" class="btn" v-else-if="btnType==='2'" @click="$emit('cancel')">{{cancelText}}</a>
           <div class="btn-group" v-else>
-            <a href="javascript:" class="btn" @click="$emit('submit')">确定</a>
-            <a href="javascript:" class="btn" @click="$emit('cancel')">取消</a>
+            <a href="javascript:" class="btn" @click="$emit('submit')">{{sureText}}</a>
+            <a href="javascript:" class="btn" @click="$emit('cancel')">{{cancelText}}</a>
           </div>
         </div>
       </div>
@@ -30,6 +30,7 @@
 <script>
 export default {
   name: "Modal",
+  // 4 + 2
   props: {
 
     // 1-是否显示弹框
