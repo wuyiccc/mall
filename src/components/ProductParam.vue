@@ -1,5 +1,5 @@
 <template>
-  <div class="nav-bar">
+  <div class="nav-bar" :class="{'is_fixed' : isFiexed}">
     <div class="container">
       <div class="pro-title">
         小米8
@@ -16,7 +16,25 @@
 
 <script>
 export default {
-  name: "ProductParam"
+  name: "ProductParam",
+  data() {
+    return {
+      isFiexed: false
+    }
+  },
+  mounted() {
+    window.addEventListener('scroll', this.initHeight);
+  },
+  destroyed() {
+    window.removeEventListener('scroll', this.initHeight, false); // 冒泡形式消除事件监听器
+  },
+  methods: {
+    initHeight() {
+      // 获取y轴偏移量
+      let scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop;
+      this.isFiexed = scrollTop > 152;
+    }
+  }
 }
 </script>
 
@@ -26,26 +44,39 @@ export default {
 @import "./../assets/scss/base.scss";
 
 
-  .nav-bar {
-    height: 70px;
-    line-height: 70px;
-    border: 1px solid $colorH;
-    .container {
-      @include flex();
-      .pro-title {
-        font-size: $fontH;
-        color: $colorB;
-        font-weight: bold;
+.nav-bar {
+  height: 70px;
+  line-height: 70px;
+  border-top: 1px solid $colorH;
+  background-color: $colorG;
+
+  &.is_fixed {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    box-shadow: 0 5px 5px $colorE;
+  }
+
+  .container {
+    @include flex();
+
+    .pro-title {
+      font-size: $fontH;
+      color: $colorB;
+      font-weight: bold;
+    }
+
+    .pro-param {
+      font-size: $fontJ;
+
+      span {
+        margin: 0 10px;
       }
-      .pro-param {
-        font-size: $fontJ;
-        span {
-          margin: 0 10px;
-        }
-        a {
-          color: $colorC;
-        }
+
+      a {
+        color: $colorC;
       }
     }
   }
+}
 </style>

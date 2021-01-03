@@ -6,6 +6,17 @@
         <button class="btn">立即购买</button>
       </template>
     </ProductParam>
+    <div class="h">123</div>
+    <div class="h">123</div>
+    <div class="h">123</div>
+    <div class="h">123</div>
+    <div class="h">123</div>
+    <div class="h">123</div>
+    <div class="h">123</div>
+    <div class="h">123</div>
+    <div class="h">123</div>
+    <div class="h">123</div>
+    <div class="h">123</div>
   </div>
 </template>
 
@@ -23,6 +34,10 @@ export default {
 <style lang="scss" scoped>
 
 .product {
+  .h {
+    height: 150px;
+    background-color: #7ECF68;
+  }
   button {
     margin-left: 10px;
   }
