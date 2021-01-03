@@ -330,11 +330,11 @@ export default {
       this.axios.get('/products', {
         params: {
           categoryId: 100012,
-          pageSize: 8
+          pageSize: 14
         }
       }).then((res) => {
         console.log('###phoneList:', res.list);
-        this.phoneList = [res.list.slice(0, 4), res.list.slice(4, 8)];
+        this.phoneList = [res.list.slice(6, 10), res.list.slice(10, 14)]; // 前6条数据是给其他功能使用的
       })
     }
   }
