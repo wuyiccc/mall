@@ -28,7 +28,7 @@
                   <a :href="'/#/home/product/' + item.id" target="_blank">
                     <div class="pro-img">
                       <img
-                          :src="item.mainImage"
+                          v-lazy="item.mainImage"
                           :alt="item.subTitile">
                     </div>
                     <div class="pro-name">{{ item.name }}</div>
@@ -51,7 +51,7 @@
                   <a href="javascript:" target="_blank">
                     <div class="pro-img">
                       <img
-                          src="/imgs/nav-img/nav-3-1.jpg"
+                          v-lazy="'/imgs/nav-img/nav-3-1.jpg'"
                           alt="">
                     </div>
                     <div class="pro-name">小米壁画电视</div>

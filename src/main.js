@@ -1,13 +1,17 @@
 import Vue from 'vue'
 import axios from 'axios';
 import VueAxios from 'vue-axios';
+import VueLazyload from "vue-lazyload";
 
 
 // 自定义的组件必须以@ 或者 . 开头，不能直接写组件名称，否则会被当作引入的依赖
 import App from '@/App.vue'
 import router from "@/router";
 // import env from '@/env';
-
+Vue.use(VueLazyload, {
+    // 指定懒加载预显示的图片
+    loading: '/imgs/loading-svg/loading-bars.svg'
+});
 Vue.use(VueAxios, axios);
 Vue.config.productionTip = false
 
