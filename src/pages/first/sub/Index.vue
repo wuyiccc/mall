@@ -90,7 +90,7 @@
                 <div class="item-info">
                   <h3>{{ item.name }}</h3>
                   <p>{{ item.subtitle }}</p>
-                  <p class="price">{{ item.price | currency }}</p>
+                  <p class="price" @click="addCart(item.id)">{{ item.price | currency }}</p>
                 </div>
               </div>
             </div>
@@ -99,7 +99,7 @@
       </div>
     </div>
     <service-bar></service-bar>
-    <modal title="提示" sure-text="查看购物车" btn-type="1" modal-type="middle" :show-modal="true">
+    <modal title="提示" sure-text="查看购物车" btn-type="1" modal-type="middle" :show-modal="showModal" @submit="goToCart" @cancel="showModal=false">
       <template v-slot:body>
         <p>商品添加成功</p>
       </template>
@@ -315,7 +315,8 @@ export default {
           img: '/imgs/ads/ads-4.jpg'
         },
       ],
-      phoneList: []
+      phoneList: [],
+      showModal: false
     }
   },
   // 过滤器
@@ -343,6 +344,21 @@ export default {
         console.log('###phoneList:', res.list);
         this.phoneList = [res.list.slice(6, 10), res.list.slice(10, 14)]; // 前6条数据是给其他功能使用的
       })
+    },
+    addCart() {
+      this.showModal = true;
+      return;
+      // this.axios.post('/carts', {
+      //   productId: id,
+      //   selected: true
+      // }).then(()=>{
+      //
+      // }).catch(()=>{
+      //   this.showModal = true;
+      // })
+    },
+    goToCart() {
+      this.$router.push('/cart');
     }
   }
 }

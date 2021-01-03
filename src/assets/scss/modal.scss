@@ -1,11 +1,29 @@
 .modal {
   @include position(fixed);
   z-index: 10;
+  transition: all .5s;
   .mask {
     @include position(fixed);
     background-color: $colorI;
     opacity: 0.5;
   }
+
+   //必须按照顺序写
+  //进入动画结束状态
+  &.slide-enter-active {
+    top: 0;
+  }
+  // 离开动画结束状态
+  &.slide-leave-active {
+    top: -100%;
+  }
+
+  //进入动画开始状态
+  &.slide-enter {
+    top: -100%;
+  }
+
+
   .modal-dialog {
     @include position(absolute, 40%, 50%, 660px, auto);
     background-color: $colorG;
