@@ -82,14 +82,15 @@
           <div class="list-box">
             <div class="list" v-for="(arr, index) in phoneList" :key="index">
               <div class="item" v-for="(item, subIndex) in arr" :key="subIndex">
-                <span>新品</span>
+                <span :class="{'new-pro':subIndex % 2 === 0}">新品</span>
+                <span :class="{'kill-pro':subIndex % 2 === 1}">秒杀</span>
                 <div class="item-img">
-                  <img src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/6f2493e6c6fe8e2485c407e5d75e3651.jpg" alt="">
+                  <img :src="item.mainImage" alt="">
                 </div>
                 <div class="item-info">
-                  <h3>小米9</h3>
-                  <p>骁龙855, 索尼4800万超广角微距</p>
-                  <p class="price">2999元</p>
+                  <h3>{{ item.name }}</h3>
+                  <p>{{ item.subtitle }}</p>
+                  <p class="price">{{ item.price | currency }}</p>
                 </div>
               </div>
             </div>
@@ -307,10 +308,34 @@ export default {
           img: '/imgs/ads/ads-4.jpg'
         },
       ],
-      phoneList: [
-        [1, 1, 1, 1],
-        [1, 1, 1, 1],
-      ]
+      phoneList: []
+    }
+  },
+  // 过滤器
+  filters: {
+    currency(val) {
+      if (!val) {
+        return '0.00';
+      }
+
+      return '￥' + val.toFixed(2) + '元';
+    }
+  },
+  mounted() {
+    this.init();
+  }
+  ,
+  methods: {
+    init() {
+      this.axios.get('/products', {
+        params: {
+          categoryId: 100012,
+          pageSize: 8
+        }
+      }).then((res) => {
+        console.log('###phoneList:', res.list);
+        this.phoneList = [res.list.slice(0, 4), res.list.slice(4, 8)];
+      })
     }
   }
 }
@@ -476,47 +501,62 @@ export default {
             height: 302px;
             background-color: $colorG;
             text-align: center;
-          }
 
-          span {
+            span {
+              display: none;
+              width: 67px;
+              height: 24px;
+              line-height: 24px;
+              color: #ffffff;
 
-          }
-
-          .item-img {
-            img {
-
-              height: 195px;
-            }
-          }
-
-          .item-info {
-            h3 {
-              font-size: $fontJ;
-              color: $colorB;
-              line-height: $fontJ;
-              font-weight: bold;
+              &.new-pro{
+                display: inline-block;
+                background-color:#7ECF68;
+              }
+              &.kill-pro{
+                display: inline-block;
+                background-color:#E82626;
+              }
             }
 
-            p {
-              color: $colorD;
-              line-height: 13px;
-              margin: 6px auto 13px;
+            .item-img {
+              img {
+                width: 100%;
+                height: 195px;
+              }
             }
 
-            .price {
-              color: #F20A0A;
-              font-size: $fontJ;
-              font-weight: bold;
-              cursor: pointer;
+            .item-info {
+              h3 {
+                font-size: $fontJ;
+                color: $colorB;
+                line-height: $fontJ;
+                font-weight: bold;
+              }
 
-              &:after {
-                content: ' ';
-                @include bgImg(22px, 22px, '/imgs/icon-cart-hover.png');
-                margin-left: 5px;
-                vertical-align: middle;
+              p {
+                color: $colorD;
+                line-height: 13px;
+                margin: 6px auto 13px;
+              }
+
+              .price {
+                color: #F20A0A;
+                font-size: $fontJ;
+                font-weight: bold;
+                cursor: pointer;
+
+                &:after {
+                  content: ' ';
+                  @include bgImg(22px, 22px, '/imgs/icon-cart-hover.png');
+                  margin-left: 5px;
+                  vertical-align: middle;
+                }
               }
             }
           }
+
+
         }
       }
     }
