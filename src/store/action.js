@@ -6,4 +6,10 @@
 
 export default {
 
+    saveUserName(context, username) {
+        context.commit('saveUserName', username); // 触发mutations的saveUserName方法
+    },
+    saveCartCount(context, cartCount) {
+        context.commit('saveCartCount', cartCount);
+    }
 }

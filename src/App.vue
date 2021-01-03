@@ -10,8 +10,7 @@ export default {
   name: 'App',
   components: {},
   data() {
-    return {
-    }
+    return {}
   },
   mounted() {
     this.getUser();
@@ -20,14 +19,14 @@ export default {
   methods: {
     getUser() {
       // 会自动传递cookie中的userId
-      this.axios.get('/user').then(()=>{
+      this.axios.get('/user').then((res) => {
         // todo 保存到vuex
-
+        this.$store.dispatch('saveUserName', res.username);
       })
     },
     getCartCount() {
-      this.axios.get('/carts/products/sum').then(()=>{
-
+      this.axios.get('/carts/products/sum').then((res) => {
+        this.$store.dispatch('saveCartCount', res);
       })
     }
   }

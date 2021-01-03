@@ -58,6 +58,7 @@ export default {
         // 在cookie中存储用户的id，方便在信息展示页面根据userId去读取后端的用户信息接口
         this.$cookie.set('userId', res.id, {expires: '1M'});
         // to-do 保存用户名
+        this.$store.dispatch('saveUserName', res.username); // 触发vuex的action的saveUserName方法
         this.$router.push('/home/index');
       })
     },

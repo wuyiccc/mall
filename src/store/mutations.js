@@ -8,5 +8,10 @@
  */
 
 export default {
-
+    saveUserName(state, username) {
+        state.username = username; // 将username存入state中
+    },
+    saveCartCount(state, cartCount) {
+        state.cartCount = cartCount;
+    }
 }
