@@ -14,7 +14,23 @@ export default {
     }
   },
   mounted() {
+    this.getUser();
+    this.getCartCount();
   },
+  methods: {
+    getUser() {
+      // 会自动传递cookie中的userId
+      this.axios.get('/user').then(()=>{
+        // todo 保存到vuex
+
+      })
+    },
+    getCartCount() {
+      this.axios.get('/carts/products/sum').then(()=>{
+
+      })
+    }
+  }
 }
 </script>
 
