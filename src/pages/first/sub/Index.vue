@@ -21,31 +21,31 @@
             </li>
             <li class="menu-item">
               <a href="javascript:">电视 盒子</a>
-<!--              <div class="children"></div>-->
+              <!--              <div class="children"></div>-->
             </li>
             <li class="menu-item">
               <a href="javascript:">笔记本 平板</a>
-<!--              <div class="children"></div>-->
+              <!--              <div class="children"></div>-->
             </li>
             <li class="menu-item">
               <a href="javascript:">家电 插线板</a>
-<!--              <div class="children"></div>-->
+              <!--              <div class="children"></div>-->
             </li>
             <li class="menu-item">
               <a href="javascript:">出行 穿戴</a>
-<!--              <div class="children"></div>-->
+              <!--              <div class="children"></div>-->
             </li>
             <li class="menu-item">
               <a href="javascript:">智能 路由器</a>
-<!--              <div class="children"></div>-->
+              <!--              <div class="children"></div>-->
             </li>
             <li class="menu-item">
               <a href="javascript:">电源 配件</a>
-<!--              <div class="children"></div>-->
+              <!--              <div class="children"></div>-->
             </li>
             <li class="menu-item">
               <a href="javascript:">生活 箱包</a>
-<!--              <div class="children"></div>-->
+              <!--              <div class="children"></div>-->
             </li>
           </ul>
         </div>
@@ -58,8 +58,16 @@
           <div class="swiper-button-next" slot="button-next"></div>
         </swiper>
       </div>
-      <div class="ads-box"></div>
-      <div class="banner"></div>
+      <div class="ads-box">
+        <a :href="'/#/home/product/' + item.id" v-for="(item, index) in adsList" :key="index">
+          <img :src="item.img" alt="">
+        </a>
+      </div>
+      <div class="banner">
+        <a href="/#/home/product/30">
+          <img src="/imgs/banner-1.png" alt="">
+        </a>
+      </div>
       <div class="product-box"></div>
     </div>
     <ServiceBar></ServiceBar>
@@ -253,9 +261,25 @@ export default {
             name: '移动4G专区'
           },
         ],
+      ],
+      adsList: [
+        {
+          id: 33,
+          img: '/imgs/ads/ads-1.png'
+        },
+        {
+          id: 48,
+          img: '/imgs/ads/ads-2.jpg'
+        },
+        {
+          id: 45,
+          img: '/imgs/ads/ads-3.png'
+        },
+        {
+          id: 47,
+          img: '/imgs/ads/ads-4.jpg'
+        },
       ]
-
-
     }
   }
 }
@@ -268,6 +292,7 @@ export default {
 
 .index {
   .swiper-box {
+
     .nav-menu {
       box-sizing: border-box;
       position: absolute;
@@ -282,7 +307,7 @@ export default {
           height: 50px;
           line-height: 50px;
 
-          >a {
+          > a {
             display: block;
             position: relative;
             font-size: 16px;
@@ -300,6 +325,7 @@ export default {
 
           &:hover {
             background-color: $colorA;
+
             .children {
               display: block;
             }
@@ -364,6 +390,21 @@ export default {
       }
     }
   }
+
+  .ads-box {
+    @include flex();
+    margin-top: 14px;
+    margin-bottom: 31px;
+    > a {
+      width: 296px;
+      height: 167px;
+    }
+  }
+
+  .banner {
+    margin-bottom: 50px;
+  }
+
 }
 
 </style>
