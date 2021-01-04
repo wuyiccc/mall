@@ -99,7 +99,8 @@
       </div>
     </div>
     <service-bar></service-bar>
-    <modal title="提示" sure-text="查看购物车" btn-type="1" modal-type="middle" :show-modal="showModal" @submit="goToCart" @cancel="showModal=false">
+    <modal title="提示" sure-text="查看购物车" btn-type="1" modal-type="middle" :show-modal="showModal" @submit="goToCart"
+           @cancel="showModal=false">
       <template v-slot:body>
         <p>商品添加成功</p>
       </template>
@@ -345,17 +346,16 @@ export default {
         this.phoneList = [res.list.slice(6, 10), res.list.slice(10, 14)]; // 前6条数据是给其他功能使用的
       })
     },
-    addCart() {
-      this.showModal = true;
-      return;
-      // this.axios.post('/carts', {
-      //   productId: id,
-      //   selected: true
-      // }).then(()=>{
-      //
-      // }).catch(()=>{
-      //   this.showModal = true;
-      // })
+    addCart(id) {
+      this.axios.post('/carts', {
+        productId: id,
+        selected: true
+      }).then((res) => {
+        this.showModal = true;
+        this.$store.dispatch('saveCartCount', res.cartTotalQuantity);
+      }).catch(() => {
+        this.showModal = true;
+      })
     },
     goToCart() {
       this.$router.push('/cart');

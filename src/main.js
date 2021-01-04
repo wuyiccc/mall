@@ -55,6 +55,7 @@ axios.interceptors.response.use(function (response) {
             // 此处无法使用route进行跳转，只能在Vue实例中使用
             window.location.href = '/#/login';
         }
+        return Promise.reject(res);
 
     } else {
         alert(res.msg);
